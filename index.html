@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./jquery-3.6.0.js"></script>
+    <script src="./MSalert.js"></script>
+    <link rel="stylesheet" href="./desing.css">
+    
+    <script>
+        function prueba1(){
+            let alerta = MSalert.principal({icon:'warning', title:'Eliminar Elemento',description:'¿Desea eliminar el elemento seccionado?',button:true, extra:'marco'}).then(result => {
+                console.log('resultado promesa', result)
+            })
+        }
+
+        function prueba2(){
+            console.log('funcionando prueba2')
+            let items = ['texto','numero']
+
+            items.map(itemID =>{
+                $(function(){
+                    if($("#"+itemID).val() == ''){
+                        $("#"+itemID).css('border','1px solid red')
+                        MSalert.alerta(
+                            {
+                                id:itemID,
+                                text : 'Requeridos',
+                                position: 'right',
+                                status: "success",
+                                duration: 3000,
+                            
+                            })
+
+                    }
+                })
+            })
+        }
+
+        MSalert.alerta({
+                                id:'seccion2',
+                                text: 'Error en la seccion',
+                                position: 'up',
+                                status: "error",
+                                duration : 5000,
+                            
+                            })
+    </script>
+</head>
+<body>
+    <div class="section">
+        <button type="button" id="boton1" onclick="prueba1()">Alerta</button>
+    </div>
+
+    <div class="section" id="seccion2" style="height:100px;">
+        <input style="height:30px; margin-top: 10px" type="text" id="texto">
+        <input style="height:30px; margin-top: 10px" type="number" id="numero">
+        <button type="button" id="save" onclick="prueba2()">save</button>
+    </div>
+</body>
+</html>

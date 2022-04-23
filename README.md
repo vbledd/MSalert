@@ -1,4 +1,5 @@
 # MSalert
+*Es necesario importar Jquery para su funcionamiento*
 ## Alertas Principales
 ```javascript
 MSalert.principal(
